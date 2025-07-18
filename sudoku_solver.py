@@ -1,15 +1,15 @@
 def is_valid(num, position, grid):
-    # Check row
+    # This is used to check the rows
     for i in range(len(grid[0])):
         if grid[position[0]][i] == num and position[1] != i:
             return False
 
-    # Check column
+    # This is used to check the column
     for i in range(len(grid)):
         if grid[i][position[1]] == num and position[0] != i:
             return False
 
-    # Check box
+    # This is used to check the inner box.
     box_x = position[1] // 3
     box_y = position[0] // 3
 

@@ -1,18 +1,19 @@
 import random
 import copy
+from itertools import product
 
 def is_valid(num, position, grid):
-    # Check row
+    # This is used to check the rows
     for i in range(len(grid[0])):
         if grid[position[0]][i] == num and position[1] != i:
             return False
 
-    # Check column
+    # This is used to check the column
     for i in range(len(grid)):
         if grid[i][position[1]] == num and position[0] != i:
             return False
 
-    # Check box
+    # This is used to check the inner box.
     box_x = position[1] // 3
     box_y = position[0] // 3
 
@@ -29,7 +30,7 @@ def solve(grid):
         for j in range(9):
             if grid[i][j] == 0:
                 numbers = list(range(1, 10))
-                random.shuffle(numbers)  # Randomize to create different solutions
+                random.shuffle(numbers)  # Randomize to create different numbers
                 
                 for num in numbers:
                     if is_valid(num, (i, j), grid):
@@ -47,11 +48,11 @@ def generate_complete_grid():
     
     grid = [[0 for _ in range(9)] for _ in range(9)]
     
-    # Fill diagonal 3x3 boxes first (they don't interfere with each other)
+    # Filling the diagonals becuase they don't intercept with eachother
     for box in range(0, 9, 3):
         fill_box(grid, box, box)
     
-    # Fill remaining cells
+    # Filling remaining cells
     solve(grid)
     return grid
 
@@ -63,23 +64,21 @@ def fill_box(grid, row, col):
         for j in range(3):
             grid[row + i][col + j] = numbers[i * 3 + j]
 
-def remove_numbers(grid):
+def remove_numbers(grid, num_to_remove=30):
     
-    puzzle = copy.deepcopy(grid)
+    new_grid = [row[:] for row in grid]
     
+    # Getting the coordinates
+    cells = list(product(range(9), range(9)))
     
-    cells_to_remove = 35
-    cells_removed = 0
+
+    random.shuffle(cells)
     
-    while cells_removed < cells_to_remove:
-        row = random.randint(0, 8)
-        col = random.randint(0, 8)
+    for i in range(num_to_remove):
+        row, col = cells[i]
+        new_grid[row][col] = 0
         
-        if puzzle[row][col] != 0:
-            puzzle[row][col] = 0
-            cells_removed += 1
-    
-    return puzzle
+    return new_grid
 
 def print_grid(grid):
     
@@ -105,16 +104,22 @@ def generate_sudoku_puzzle():
     print("\nSudoku Puzzle:")
     print_grid(puzzle)
     
+    # Ask the user if they want to generate a new puzzle
+    
+    if generate == 'y':
+        # Generate a new puzzle
+        grid = generate_complete_grid()
+    
     return puzzle, complete_grid
 
 def main():
     print("=== SUDOKU PUZZLE GENERATOR ===")
     
     while True:
-        generate = input("\nGenerate a new puzzle? (y/n): ").lower().strip()
+        generate = input("\Do you want to generate a new puzzle? (y/n): ").lower().strip()
         
         if generate == 'n':
-            print("Thanks for using Sudoku Generator!")
+            print("Thanks for using KenBoi's Sudoku!")
             break
         elif generate == 'y':
             puzzle, solution = generate_sudoku_puzzle()

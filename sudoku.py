@@ -6,7 +6,7 @@ from PIL import Image
 ck.set_appearance_mode("System")
 ck.set_default_color_theme("blue")
 app = ck.CTk()
-app.geometry("700x600")
+app.geometry("700x800")
 app.title("KenBoi's Sudoku")
 
 app.iconbitmap("sudoku_logo.ico")
@@ -53,7 +53,11 @@ for i in range(9):
     
     
         entry_grid[i][j] = entry
-    
+
+
+solution_grid = None
+hints_used = 0
+
 
 def get_from_entries():
     grid = []
@@ -79,8 +83,14 @@ def set_grid(grid, locked=None):
                     enter.configure(state="normal")
 
 def generate():
+    global solution_grid, hints_used
+    hints_used = 0
+    hint_button.configure(state="normal")
     full = generate_complete_grid()
-    puzzle = remove_numbers(full)
+    solution_grid = [row[:] for row in full]
+    cells_to_remove = int(difficult_slider.get())
+    puzzle = remove_numbers(full, cells_to_remove)
+
 
 
 
@@ -97,6 +107,10 @@ def solve_sudoku():
 
 
 def clear():
+    global solution_grid, hints_used
+    hints_used = 0
+    hint_button.configure(state="normal")
+    solution_grid = None
     for i in entry_grid:
         for j in i:
             j.configure(state="normal")
@@ -121,6 +135,64 @@ def validate():
             grid[i][j] = value
 
 
+def give_hint():
+    global hints_used
+    if solution_grid is None or hints_used >= 5:
+        return
+
+    grid = get_from_entries()
+    empty_cells = []
+    for r in range(9):
+        for c in range(9):
+            if grid[r][c] == 0:
+                empty_cells.append((r, c))
+
+    if not empty_cells:
+        return
+
+    import random
+    row, col = random.choice(empty_cells)
+    value = solution_grid[row][col]
+    entry_grid[row][col].insert(0, str(value))
+    
+    hints_used += 1
+    if hints_used >= 5:
+        hint_button.configure(state="disabled")
+
+
+difficulty_controls_frame = ck.CTkFrame(app)
+difficulty_controls_frame.pack(pady=10)
+
+difficulty_frame = ck.CTkFrame(difficulty_controls_frame)
+difficulty_frame.pack(side="left", padx=10)
+
+difficulty_label = ck.CTkLabel(difficulty_frame, text="Difficulty: 35 cells have been removed", font=("Arial", 16))
+difficulty_label.pack(pady=10)
+
+def update_difficulty(val):
+    difficulty_label.configure(text=f"Difficulty: {int(val)} cells have been removed")
+
+
+difficult_slider = ck.CTkSlider(
+    difficulty_frame,
+    from_=20,
+    to=65,
+    number_of_steps=40,
+    command=update_difficulty
+)
+
+difficult_slider.set(30)
+difficult_slider.pack(padx=20, pady=5)
+
+hint_button = ck.CTkButton(
+    difficulty_controls_frame,
+    text="Hint",
+    command=give_hint,
+    width=50,
+    height=50,
+    corner_radius=25
+)
+hint_button.pack(side="left", padx=10, pady=10)
 
 
 frame_1 = ck.CTkFrame(app)
