@@ -163,7 +163,7 @@ def give_hint():
 difficulty_controls_frame = ck.CTkFrame(app)
 difficulty_controls_frame.pack(pady=10)
 
-difficulty_frame = ck.CTkFrame(difficulty_controls_frame)
+difficulty_frame = ck.CTkFrame(difficulty_controls_frame, fg_color="#2B2B2B")
 difficulty_frame.pack(side="left", padx=10)
 
 difficulty_label = ck.CTkLabel(difficulty_frame, text="Difficulty: 35 cells have been removed", font=("Arial", 16))
