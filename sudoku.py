@@ -166,7 +166,7 @@ difficulty_controls_frame.pack(pady=10)
 difficulty_frame = ck.CTkFrame(difficulty_controls_frame, fg_color="#2B2B2B")
 difficulty_frame.pack(side="left", padx=10)
 
-difficulty_label = ck.CTkLabel(difficulty_frame, text="Difficulty: 35 cells have been removed", font=("Arial", 16))
+difficulty_label = ck.CTkLabel(difficulty_frame, text="Difficulty: 35 cells to be removed", font=("Arial", 16))
 difficulty_label.pack(pady=10)
 
 def update_difficulty(val):
@@ -176,7 +176,7 @@ def update_difficulty(val):
 difficult_slider = ck.CTkSlider(
     difficulty_frame,
     from_=20,
-    to=65,
+    to=55,
     number_of_steps=40,
     command=update_difficulty
 )
