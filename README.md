@@ -1,44 +1,49 @@
 # KenBoi's Sudoku
 
-This is a Sudoku game application built with Python and the `customtkinter` library. It provides a graphical user interface to play, solve, and validate Sudoku puzzles with customizable difficulty levels.
+KenBoi's Sudoku is a feature-rich desktop application built with **Python** and **customTkinter** that lets you play, generate, and solve Sudoku puzzles through a clean, modern UI. Designed for both casual players and Sudoku enthusiasts, it blends logic, interactivity, and visual feedback.
 
-## Features
+> This was a passion project to explore GUI design, backtracking algorithms, and user-centered experience development.
 
-*   **Generate Puzzle**: Creates a new random Sudoku puzzle with adjustable difficulty.
-*   **Difficulty Slider**: Customize puzzle difficulty by selecting how many cells to remove (20-55 cells).
-*   **Hint System**: Get up to 5 hints per puzzle to help you solve challenging spots.
-*   **Solve**: Automatically solves the current puzzle on the board.
-*   **Clear**: Clears all entries from the grid and resets hint counter.
-*   **Validate**: Checks the current state of the puzzle and highlights correct (green) and incorrect (red) entries.
-*   **Sleek UI**: A modern and user-friendly dark-themed interface with visual feedback.
+---
 
-## How to Play
+## ✨ Features
 
-1. **Generate a Puzzle**: Click "Create Puzzle" to generate a new Sudoku puzzle.
-2. **Adjust Difficulty**: Use the difficulty slider to control how many cells are removed (20-55). More removed cells = harder puzzle.
-3. **Fill in Numbers**: Click on empty cells and enter numbers 1-9.
-4. **Get Hints**: Click the circular "Hint" button to reveal a correct number in a random empty cell (max 5 hints per puzzle).
-5. **Validate**: Click "Validate" to check your current entries - correct numbers will be highlighted in green, incorrect ones in red.
-6. **Solve**: Click "Solve" to automatically complete the puzzle.
-7. **Clear**: Click "Clear" to start over with a blank grid.
+- **Generate Puzzle** – Create a new random Sudoku puzzle every time  
+- **Difficulty Slider** – Remove 20 to 55 cells to control puzzle hardness  
+- **Hint System** – Request up to 5 hints per puzzle  
+- **Validate Entries** – Highlights correct (green) and incorrect (red) inputs  
+- **Auto-Solve** – Solves the current puzzle using a backtracking algorithm  
+- **Clear Board** – Reset the puzzle and hint counter  
+- **Sleek Dark-Themed UI** – Built with `customTkinter` for a modern, responsive feel  
 
-## How to Run
+---
 
-1.  **Prerequisites**: Make sure you have Python installed on your system.
+## 🕹️ How to Play
 
-2.  **Install Dependencies**: Open a terminal or command prompt in the project directory and install the required libraries:
-    ```bash
-    pip install customtkinter pillow
-    ```
+1. **Create Puzzle** – Click "Create Puzzle"  
+2. **Adjust Difficulty** – Use the slider to remove 20–55 random cells  
+3. **Play** – Click on empty cells and enter numbers (1–9)  
+4. **Get Hints** – Reveal correct numbers (max 5 per puzzle)  
+5. **Validate** – Instantly check your current entries  
+6. **Solve** – Auto-complete the puzzle  
+7. **Clear** – Reset everything and start over  
 
-3.  **Run the Application**: Execute the main script to start the game:
-    ```bash
-    python sudoku.py
-    ```
+---
 
-## Files
+## 🚀 Getting Started
 
-*   `sudoku.py`: The main application file that runs the GUI.
-*   `sudoku_maker.py`: Contains the logic for generating new Sudoku puzzles.
-*   `sudoku_solver.py`: Contains the algorithm to solve the Sudoku puzzles.
-*   `sudoku_logo.ico`: The icon for the application window.
+### Prerequisites
+Make sure Python 3 is installed on your system.
+
+### Installation
+Install the required dependencies:
+```bash
+pip install customtkinter pillow
+```
+
+# Screenshots
+![Screenshot 1 of Sudoku App](images/Screenshot 2025-08-05 152838.png)
+![Screenshot 2 of Sudoku App](images/Screenshot 2025-08-05 152853.png)
+![Screenshot 3 of Sudoku App](images/Screenshot 2025-08-05 152918.png)
+![Screenshot 4 of Sudoku App](images/Screenshot 2025-08-05 152932.png)
+![Screenshot 5 of Sudoku App](images/Screenshot 2025-08-05 152938.png)
