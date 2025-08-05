@@ -42,8 +42,8 @@ pip install customtkinter pillow
 ```
 
 # Screenshots
-![Screenshot 1 of Sudoku App](images/Screenshot 2025-08-05 152838.png)
-![Screenshot 2 of Sudoku App](images/Screenshot 2025-08-05 152853.png)
-![Screenshot 3 of Sudoku App](images/Screenshot 2025-08-05 152918.png)
-![Screenshot 4 of Sudoku App](images/Screenshot 2025-08-05 152932.png)
-![Screenshot 5 of Sudoku App](images/Screenshot 2025-08-05 152938.png)
+![Screenshot 1 of Sudoku App](images/screenshot-1.png)
+![Screenshot 2 of Sudoku App](images/screenshot-2.png)
+![Screenshot 3 of Sudoku App](images/screenshot-3.png)
+![Screenshot 4 of Sudoku App](images/screenshot-4.png)
+![Screenshot 5 of Sudoku App](images/screenshot-5.png)
